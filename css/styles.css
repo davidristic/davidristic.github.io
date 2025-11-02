@@ -1,0 +1,132 @@
+/* ---------- LaTeX-like font setup (Computer Modern / CMU) ---------- */
+@font-face {
+  font-family: "CMU Serif";
+  src: url("/assets/fonts/cmu/cmunrm.woff2") format("woff2"),
+       url("/assets/fonts/cmu/cmunrm.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CMU Serif";
+  src: url("/assets/fonts/cmu/cmunti.woff2") format("woff2"),
+       url("/assets/fonts/cmu/cmunti.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "CMU Serif";
+  src: url("/assets/fonts/cmu/cmunbx.woff2") format("woff2"),
+       url("/assets/fonts/cmu/cmunbx.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CMU Serif";
+  src: url("/assets/fonts/cmu/cmunbi.woff2") format("woff2"),
+       url("/assets/fonts/cmu/cmunbi.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+body {
+  font-family: "CMU Serif", serif;
+}
+
+button, input, select, textarea { font-family: inherit; }
+
+/* ---------- Base typesetting (like LaTeX body) ---------- */
+:root {
+  --page-max: 70ch;                 /* LaTeX-ish comfortable measure */
+  --text-size: clamp(17px, 1.6vw, 19px);
+  --section-size: clamp(26px, 3vw, 30px);      /* \section */
+  --subsection-size: clamp(21px, 2.4vw, 24px); /* \subsection */
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+/* Centered, book-like layout */
+main {
+  max-width: var(--page-max);
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+/* Paragraph rhythm similar to LaTeX */
+p { margin: 0 0 0.85em; }
+p + p { text-indent: 1.2em; }        /* first-line indent for consecutive paragraphs */
+ul, ol { margin: 0.85em 0 0.85em 2em; }
+
+/* ---------- Navigation styled like LaTeX section/subsection ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.nav-inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  font-family: "CMU Serif", serif;
+  font-weight: 700;                                  /* \bfseries */
+  font-size: clamp(20px, 2.2vw, 24px);               /* section/subsection vibe */
+  line-height: 1.1;
+  color: #111;
+  text-decoration: none;
+  padding: 0.1rem 0;
+  border-bottom: 2px solid transparent;              /* subtle underline on hover/active */
+}
+.nav a:hover,
+.nav a[aria-current="page"] { border-bottom-color: #111; }
+
+/* Optional: small-caps nav variant */
+.nav--smallcaps a { font-variant-caps: small-caps; letter-spacing: 0.02em; }
+
+/* ---------- LaTeX-like headings for in-page sections ---------- */
+h1, h2, h3 {
+  font-family: "CMU Serif", serif;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 1.6em 0 0.6em;
+}
+
+h1 { font-size: var(--section-size); }
+h2 { font-size: var(--subsection-size); }
+h3 { font-size: clamp(18px, 2vw, 20px); font-style: italic; } /* akin to \subsubsection */
+
+/* ---------- Fine typography touches ---------- */
+em, i { font-style: italic; }
+strong, b { font-weight: 700; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.95em;
+}
+hr { border: none; border-top: 1px solid #ddd; margin: 2rem 0; }
+a { color: inherit; }
+figure { margin: 1.2em 0; }
+figcaption { font-size: 0.95em; color: #555; }
+
+/* Better hyphenation & ligatures for long lines */
+main, .nav {
+  hyphens: auto;
+  overflow-wrap: anywhere;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+}
+
+/* ---------- Minimal reset for button-like links (if needed) ---------- */
+button.reset, .reset-button {
+  all: unset;
+  cursor: pointer;
+}
