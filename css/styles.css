@@ -36,7 +36,7 @@ button, input, select, textarea { font-family: inherit; }
 
 /* ---------- Base typesetting (like LaTeX body) ---------- */
 :root {
-  --page-max: 70ch;                 /* LaTeX-ish comfortable measure */
+  --page-max: 150ch;                 /* LaTeX-ish comfortable measure */
   --text-size: clamp(17px, 1.6vw, 19px);
   --section-size: clamp(26px, 3vw, 30px);      /* \section */
   --subsection-size: clamp(21px, 2.4vw, 24px); /* \subsection */
@@ -77,18 +77,29 @@ ul, ol { margin: 0.85em 0 0.85em 2em; }
   flex-wrap: wrap;
 }
 
+/* base */
 .nav a {
-  font-family: "CMU Serif", serif;
-  font-weight: 700;                                  /* \bfseries */
-  font-size: clamp(20px, 2.2vw, 24px);               /* section/subsection vibe */
-  line-height: 1.1;
-  color: #111;
+  font-weight: 400;                 /* fix the width for all states */
+  font-size: clamp(15px, 1.5vw, 19px);
+  border-bottom: 2px solid transparent;
   text-decoration: none;
-  padding: 0.1rem 0;
-  border-bottom: 2px solid transparent;              /* subtle underline on hover/active */
+  transition: border-color .2s ease, color .2s ease, text-shadow .2s ease;
 }
-.nav a:hover,
-.nav a[aria-current="page"] { border-bottom-color: #111; }
+
+/* hover: underline only (no bold change) */
+.nav a:hover {
+  border-bottom-color: #111;
+  text-shadow: none;                /* stays visually “normal” */
+}
+
+/* active/current page: appears bolder but doesn’t reflow */
+.nav a[aria-current="page"] {
+  border-bottom-color: #111;
+  text-shadow: 0 0 0.4px currentColor, 0 0 0.4px currentColor;
+  /* font-weight remains 700 so layout is stable */
+}
+
+
 
 /* Optional: small-caps nav variant */
 .nav--smallcaps a { font-variant-caps: small-caps; letter-spacing: 0.02em; }
@@ -101,8 +112,8 @@ h1, h2, h3 {
   margin: 1.6em 0 0.6em;
 }
 
-h1 { font-size: var(--section-size); }
-h2 { font-size: var(--subsection-size); }
+h1 { font-size: var(--subsection-size); }
+h2 { font-size: var(--subsubsection-size); }
 h3 { font-size: clamp(18px, 2vw, 20px); font-style: italic; } /* akin to \subsubsection */
 
 /* ---------- Fine typography touches ---------- */

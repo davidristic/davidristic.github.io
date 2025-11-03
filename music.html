@@ -10,10 +10,24 @@
 <body>
   <div id="navbar"></div>
   <script>
-    fetch("/nav.html")
-    .then(response => response.text())
-    .then(data => document.getElementById("navbar").innerHTML = data);
-  </script>
+  fetch("/nav.html")
+    .then(r => r.text())
+    .then(html => {
+      const container = document.getElementById("navbar");
+      container.innerHTML = html;
+
+      // Normalize paths so "/" == "/index.html"
+      const here = location.pathname.replace(/index\.html$/, "") || "/";
+      container.querySelectorAll("a").forEach(a => {
+        const url = new URL(a.getAttribute("href"), location.origin);
+        const path = url.pathname.replace(/index\.html$/, "") || "/";
+        if (path === here) {
+          a.setAttribute("aria-current", "page"); // accessible + easy to style
+          a.classList.add("active");              // optional class if you prefer
+        }
+      });
+    });
+   </script>
 
 
   <main>
