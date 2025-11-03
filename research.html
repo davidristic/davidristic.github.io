@@ -8,13 +8,13 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="#research">Research</a>
-      <a href="#music">Music</a>
-      <!-- add more when needed -->
-    </div>
-  </nav>
+  <div id="navbar"></div>
+  <script>
+    fetch("/nav.html")
+    .then(response => response.text())
+    .then(data => document.getElementById("navbar").innerHTML = data);
+  </script>
+
 
   <main>
     <section id="research">
