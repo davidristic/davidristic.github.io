@@ -4,52 +4,230 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>David Ristič</title>
+
+  <!-- Fonts & site CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaossa/cmu-fonts-web@latest/cmu-fonts.css">
   <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Page-local styles for the floating "Back to projects" button -->
+  <style>
+    html { scroll-behavior: smooth; }
+    .float-back {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      padding: 0.5rem 0.9rem;
+      background: #f5f5f5;
+      border: 1px solid #ccc;
+      border-radius: 0.4rem;
+      font-size: 0.9rem;
+      color: #111;
+      text-decoration: none;
+      opacity: 0.75;
+      transition: opacity 0.25s, background 0.2s;
+      z-index: 999;
+    }
+    .float-back:hover { opacity: 1; background: #eaeaea; }
+    .float-back.hidden { opacity: 0; pointer-events: none; }
+  </style>
 </head>
 <body>
+  <a id="top"></a>
+  <!-- Navbar slot -->
   <div id="navbar"></div>
   <script>
-  fetch("/nav.html")
-    .then(r => r.text())
-    .then(html => {
-      const container = document.getElementById("navbar");
-      container.innerHTML = html;
+    // Inject nav.html and highlight current page
+    fetch("/nav.html")
+      .then(r => r.text())
+      .then(html => {
+        const container = document.getElementById("navbar");
+        container.innerHTML = html;
 
-      // Normalize paths so "/" == "/index.html"
-      const here = location.pathname.replace(/index\.html$/, "") || "/";
-      container.querySelectorAll("a").forEach(a => {
-        const url = new URL(a.getAttribute("href"), location.origin);
-        const path = url.pathname.replace(/index\.html$/, "") || "/";
-        if (path === here) {
-          a.setAttribute("aria-current", "page"); // accessible + easy to style
-          a.classList.add("active");              // optional class if you prefer
-        }
+        const here = location.pathname.replace(/index\.html$/, "") || "/";
+        container.querySelectorAll("a").forEach(a => {
+          const url = new URL(a.getAttribute("href"), location.origin);
+          const path = url.pathname.replace(/index\.html$/, "") || "/";
+          if (path === here) {
+            a.setAttribute("aria-current", "page");
+            a.classList.add("active");
+          }
+        });
       });
-    });
-   </script>
-
+  </script>
 
   <main>
-    Blabla. glasba
+    <section id="music">
+      <h1>Music</h1>
+      <p class="lede">
+        I write and perform music across several ongoing projects. Below are links to my platforms and a project index.
+      </p>
 
-    <iframe 
-    width="560" 
-    height="315" 
-    src="https://www.youtube.com/embed/5kbZrplhDqo" 
-    title="YouTube video player" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen>
-    </iframe>
+      <!-- Social hub -->
+      <nav class="social-links" aria-label="Music platforms">
+        <a href="https://www.instagram.com/davidristicmusic/face" target="_blank" rel="noopener">Instagram</a><span>·</span>
+        <a href="https://www.facebook.com/davidristicmusic"  target="_blank" rel="noopener">Facebook</a><span>·</span>
+        <a href="https://www.youtube.com/@davristic"  target="_blank" rel="noopener">YouTube</a><span>·</span>
+        <a href="https://davidristic.bandcamp.com/"  target="_blank" rel="noopener">Bandcamp</a><span>·</span>
+        <a href="https://soundcloud.com/davidristic"    target="_blank" rel="noopener">SoundCloud</a>
+      </nav>
 
-    <iframe 
-    style="border: 0; width: 100%; height: 120px;" 
-    src="https://bandcamp.com/EmbeddedPlayer/track=3880664629/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" 
-    seamless>
-    <a href="https://davidristic.bandcamp.com/track/vesperum-dubia-i">Vesperum dubia I by David Ristič</a>
-    </iframe>
+      <!-- Project index / TOC -->
+      <nav id="projects" class="project-toc" aria-label="Project index">
+        <h2 class="toc-title">Projects</h2>
+        <ul>
+          <li><a href="#proj-dubia">Dubia</a></li>
+          <li><a href="#proj-unscripted">Unscripted</a></li>
+          <li><a href="#proj-lake-purple-fish">The lake of the purple fish</a></li>
+        </ul>
+      </nav>
 
+      <!-- ============ PROJECT: DUBIA ============ -->
+      <section id="proj-dubia" class="project">
+        <h2>Dubia</h2>
+        <p class="meta">2021–2023 · improvised solo piano</p>
+        <p>Explorations of...</p>
+
+        <!--VESPERUM DUBIA II-->>
+        <ul class="works">
+          <li class="work">
+            <div class="work-head">
+              <strong>Vesperum dubia II —</strong> (9. 12. 2021)
+            </div>
+            <div class="embed tall">
+              <iframe style="border: 0; 
+              width: 100%; 
+              height: 120px;" 
+              src="https://bandcamp.com/EmbeddedPlayer/track=2779178195/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" 
+              seamless><a 
+              href="https://davidristic.bandcamp.com/track/vesperum-dubia-ii">Vesperum dubia II by David Ristič</a>
+              </iframe>
+
+              
+              <iframe width="700" height="480" 
+              src="https://www.youtube.com/embed/P0eGFfOwD34" 
+              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+              </iframe>
+            </div>
+          </li>
+
+        </ul>
+
+
+        <!--VESPERUM DUBIA I-->>
+        <ul class="works">
+          <li class="work">
+            <div class="work-head">
+              <strong>Vesperum dubia I —</strong> (2. 12. 2021)
+            </div>
+            <div class="embed tall">
+              <iframe 
+              style="border: 0; 
+              width: 100%; 
+              height: 120px;" 
+              src="https://bandcamp.com/EmbeddedPlayer/track=3880664629/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" 
+              seamless><a 
+              href="https://davidristic.bandcamp.com/track/vesperum-dubia-i">Vesperum dubia I by David Ristič</a>
+              </iframe>
+
+              
+              <iframe width="700" height="480" 
+              src="https://www.youtube.com/embed/khL6l7pV4E8" 
+              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+              </iframe>
+            </div>
+          </li>
+
+        </ul>
+
+
+
+
+      </section>
+
+      <!-- ============ PROJECT: UNSCRIPTED ============ -->
+      <section id="proj-unscripted" class="project">
+        <h2>Unscripted</h2>
+        <p class="meta">2023– · solo jazz piano</p>
+        <p>Improvised dialogues between acoustic instruments and live electronics.</p>
+
+        <ul class="works">
+          <li class="work">
+            <div class="work-head">
+              <strong>Session IV —</strong> trio for winds (2022)
+            </div>
+            <div class="embed compact">
+              <iframe
+                src="https://bandcamp.com/EmbeddedPlayer/track=1234567890/size=small/bgcol=ffffff/linkcol=0687f5/transparent=true/"
+                style="border:0;width:100%;height:100%;" seamless></iframe>
+            </div>
+          </li>
+
+          <li class="work">
+            <div class="work-head">
+              <strong>Studio cut —</strong> excerpt (2021)
+            </div>
+            <div class="embed widescreen">
+              <iframe
+                src="https://www.youtube.com/embed/VIDEO_ID"
+                title="Unscripted"
+                frameborder="0" allowfullscreen></iframe>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============ PROJECT: THE LAKE OF THE PURPLE FISH ============ -->
+      <section id="proj-lake-purple-fish" class="project">
+        <h2>The lake of the purple fish</h2>
+        <p class="meta">2020– · strings, tape, electronics</p>
+        <p>A cycle of pieces on submerged memory and detuned resonance.</p>
+
+        <ul class="works">
+          <li class="work">
+            <div class="work-head">
+              <strong>Movement I —</strong> strings &amp; tape (2020)
+            </div>
+            <div class="embed widescreen">
+              <iframe
+                src="https://www.youtube.com/embed/VIDEO_ID"
+                title="Movement I"
+                frameborder="0" allowfullscreen></iframe>
+            </div>
+          </li>
+
+          <li class="work">
+            <div class="work-head">
+              <strong>Album</strong> — full release (2024)
+            </div>
+            <div class="embed tall">
+              <iframe
+                src="https://bandcamp.com/EmbeddedPlayer/album=1234567890/size=large/bgcol=ffffff/linkcol=0687f5/transparent=true/"
+                style="border:0;width:100%;height:100%;" seamless></iframe>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </section>
   </main>
+
+  <!-- Floating "Back to projects" button -->
+  <a href="#top" class="float-back hidden" title="Back to Projects">↑ Back to projects</a>
+
+  <script>
+    // Show the floating button only after scrolling past the intro/TOC
+    const backBtn = document.querySelector(".float-back");
+    const triggerEl = document.getElementById("projects");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // When the TOC is not visible, show the button
+        entries.forEach(entry => {
+          if (entry.isIntersecting) backBtn.classList.add("hidden");
+          else backBtn.classList.remove("hidden");
+        });
+      },
+      { rootMargin: "0px 0px 0px 0px", threshold: 0 }
+    );
+    if (triggerEl) observer.observe(triggerEl);
+  </script>
 </body>
 </html>

@@ -141,3 +141,12 @@ button.reset, .reset-button {
   all: unset;
   cursor: pointer;
 }
+
+.project h2 {
+  border-top: 2px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 0.4em 0;
+  margin: 2em 0 1em;
+  text-align: left; /* optional, looks nice */
+}
+
