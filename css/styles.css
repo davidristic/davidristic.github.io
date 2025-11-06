@@ -150,3 +150,31 @@ button.reset, .reset-button {
   text-align: left; /* optional, looks nice */
 }
 
+.pub-list {
+  counter-reset: pub;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.pub-list > li {
+  counter-increment: pub;
+  margin: 0 0 0.7rem 0;
+  padding-left: 2.2ch;
+  text-indent: -2.2ch;
+}
+.pub-list > li::marker { content: none; }
+.pub-list > li::before {
+  content: "[" counter(pub) "] ";
+  font-variant-numeric: tabular-nums;
+}
+.pub-list a { text-decoration: none; }
+.pub-list a:hover { text-decoration: underline; }
+
+.pub-list {
+  font-size: 0.95em;
+  line-height: 1.45;
+}
+.pub-list a { color: inherit; }
+.pub-list a:hover { text-decoration: underline; }
+
+
