@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Scores – David Ristič</title>
+
+  <!-- Fonts & site CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaossa/cmu-fonts-web@latest/cmu-fonts.css">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- Page-local styles -->
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Sub-navigation (local to /music) – isto kot na indexu */
+    .subnav {
+      border-bottom: 1px solid #ddd; padding: .6rem 1rem; margin: .25rem 0 1rem;
+      display: flex; gap: .9rem; flex-wrap: wrap;
+    }
+    .subnav a { text-decoration: none; }
+    .subnav a[aria-current="page"] { font-weight: 700; text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <!-- Global navbar -->
+  <div id="navbar"></div>
+  <script>
+    // Inject global nav and highlight current top-level section
+    fetch("/nav.html")
+      .then(r => r.text())
+      .then(html => {
+        const container = document.getElementById("navbar");
+        container.innerHTML = html;
+
+        const here = location.pathname.replace(/index\.html$/, "").replace(/\/+$/, "/") || "/";
+        container.querySelectorAll("a").forEach(a => {
+          const path = new URL(a.getAttribute("href"), location.origin).pathname
+                        .replace(/index\.html$/, "").replace(/\/+$/, "/") || "/";
+          if (path === here || (here.startsWith("/music/") && path === "/music/")) {
+            a.setAttribute("aria-current", "page");
+          }
+        });
+      });
+  </script>
+
+  <!-- Local subnav (only for /music pages) -->
+  <nav class="subnav" aria-label="Music subnavigation">
+    <a href="/music/">< -- Back to projects</a>
+    <!-- <a href="/music/videos/">Videos</a> -->
+  </nav>
+  <script>
+    // Mark active link in the local subnav
+    (function () {
+      const here = location.pathname.replace(/index\.html$/, "").replace(/\/+$/, "/") || "/";
+      document.querySelectorAll(".subnav a").forEach(a => {
+        const path = new URL(a.getAttribute("href"), location.origin).pathname
+                      .replace(/index\.html$/, "").replace(/\/+$/, "/") || "/";
+        if (path === here) a.setAttribute("aria-current", "page");
+      });
+    })();
+  </script>
+
+  <main>
+    <h1>Scores</h1>
+
+    <!-- Tukaj daj seznam partitur / PDF-jev, ali embed YouTube/Score videos -->
+    <!-- Primer minimalnega seznama -->
+    <ul>
+      <li><a href="/music/scores/piece1.pdf">Piece 1 (PDF)</a></li>
+      <li><a href="/music/scores/piece2.pdf">Piece 2 (PDF)</a></li>
+      <!-- ... -->
+    </ul>
+
+    <!-- Lahko dodaš še razdelke, filtre, itd. -->
+  </main>
+</body>
+</html>

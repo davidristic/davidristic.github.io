@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Research – David Ristič</title>
+  <title>David Ristič - Research</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaossa/cmu-fonts-web@latest/cmu-fonts.css">
   <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -15,14 +15,27 @@
     .then(r => r.text())
     .then(html => {
       document.getElementById("navbar").innerHTML = html;
-    });
-  </script>
 
-  <main style="max-width:70ch;margin:auto;padding:2rem 1rem;">
-    <h1>Research</h1>
+      // Mark current link as active
+      const here = location.pathname.replace(/index\.html$/, '').replace(/\/+$/, '/') || '/';
+      document.querySelectorAll('#navbar a').forEach(a => {
+        const p = new URL(a.getAttribute('href'), location.origin).pathname
+                    .replace(/index\.html$/, '').replace(/\/+$/, '/') || '/';
+        if (p === here) a.setAttribute('aria-current', 'page');
+      });
+    });
+    </script>
+
+  <main>
+
+    <!-- Social hub -->
+      <nav class="social-links" aria-label="Music platforms">
+        <a href="https://scholar.google.com/citations?user=B55XfnwAAAAJ" target="_blank" rel="noopener">Google scholar</a>
+      </nav>
+
+    <h1>Publications</h1>
 
     <section id="publications">
-      <h2>Publications</h2>
       <div id="publist">
         <p>Loading publications...</p>
       </div>
