@@ -1,3 +1,8 @@
+html {
+  scrollbar-gutter: stable both-edges;
+}
+
+
 /* ---------- LaTeX-like font setup (Computer Modern / CMU) ---------- */
 @font-face {
   font-family: "CMU Serif";
@@ -68,6 +73,16 @@ ul, ol { margin: 0.85em 0 0.85em 2em; }
 }
 
 .nav-inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.subnav {
   max-width: var(--page-max);
   margin: 0 auto;
   padding: 0.75rem 1rem;
@@ -176,5 +191,3 @@ button.reset, .reset-button {
 }
 .pub-list a { color: inherit; }
 .pub-list a:hover { text-decoration: underline; }
-
-
