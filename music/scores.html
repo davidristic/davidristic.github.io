@@ -3,76 +3,273 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Scores – David Ristič</title>
+  <title>David Ristič - music</title>
 
   <!-- Fonts & site CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaossa/cmu-fonts-web@latest/cmu-fonts.css">
   <link rel="stylesheet" href="/css/styles.css">
 
-  <!-- Page-local styles -->
+  <!-- Page-local styles for the floating "Back to projects" button -->
   <style>
     html { scroll-behavior: smooth; }
-
-    /* Sub-navigation (local to /music) – isto kot na indexu */
-    .subnav {
-      border-bottom: 1px solid #ddd; padding: .6rem 1rem; margin: .25rem 0 1rem;
-      display: flex; gap: .9rem; flex-wrap: wrap;
+    .float-back {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      padding: 0.5rem 0.9rem;
+      background: #f5f5f5;
+      border: 1px solid #ccc;
+      border-radius: 0.4rem;
+      font-size: 0.9rem;
+      color: #111;
+      text-decoration: none;
+      opacity: 0.75;
+      transition: opacity 0.25s, background 0.2s;
+      z-index: 999;
     }
-    .subnav a { text-decoration: none; }
-    .subnav a[aria-current="page"] { font-weight: 700; text-decoration: underline; }
+    .float-back:hover { opacity: 1; background: #eaeaea; }
+    .float-back.hidden { opacity: 0; pointer-events: none; }
   </style>
 </head>
 <body>
-  <!-- Global navbar -->
-  <div id="navbar"></div>
+  <a id="top"></a>
+
+  <!-- Main navigation -->
+  <div id="navbar" aria-label="Main navigation"></div>
+
+  <main>
+    <section id="music">
+      <p class="lede"></p>
+
+      <!-- Social hub -->
+      <nav class="social-links" aria-label="Music platforms">
+        <a href="https://www.instagram.com/davidristicmusic" target="_blank" rel="noopener">Instagram</a><span>·</span>
+        <a href="https://www.facebook.com/davidristicmusic"  target="_blank" rel="noopener">Facebook</a><span>·</span>
+        <a href="https://www.youtube.com/@davristic"         target="_blank" rel="noopener">YouTube</a><span>·</span>
+        <a href="https://davidristic.bandcamp.com/"          target="_blank" rel="noopener">Bandcamp</a><span>·</span>
+        <a href="https://soundcloud.com/davidristic"         target="_blank" rel="noopener">SoundCloud</a><span>·</span>
+        <a href="https://open.spotify.com/artist/1wvH3MOi3out1ceeRonIXZ" target="_blank" rel="noopener">Spotify</a>
+      </nav>
+
+      <!-- Sub-navigation (injected below social links) -->
+      <div id="subnav" aria-label="Music subnavigation"></div>
+
+
+      <!-- Project index / TOC -->
+      <nav id="projects" class="project-toc" aria-label="Project index">
+        <h2 class="toc-title">Projects</h2>
+        <ul>
+          <li><a href="#proj-dubia">Dubia</a></li>
+          <li><a href="#proj-unscripted">Unscripted</a></li>
+          <li><a href="#proj-lake-purple-fish">The lake of the purple fish</a></li>
+        </ul>
+      </nav>
+
+      <!-- ============ PROJECT: DUBIA ============ -->
+      <section id="proj-dubia" class="project">
+        <h2>Dubia</h2>
+        <p class="meta">2021–2023 · improvised solo piano</p>
+        <span>·</span><a href="https://youtube.com/playlist?list=PLJOUP8w8GHCpUiOfmTMSE9YMfsxZp9UvQ&si=7Y7-57jACCmUhoB5" target="_blank" rel="noopener">Youtube playlist</a>
+        <span>·</span><a href="https://youtube.com/playlist?list=PLJOUP8w8GHCrhIAn_iaoQrOwbYSE8jzfD&si=rZB_0uymVlkhxSGe" target="_blank" rel="noopener">Score videos playlist</a>
+
+        <!-- MANE QUIES II -->
+        <ul class="works">
+          <li class="work">
+            <div class="work-head">
+              <strong>Mane quies II —</strong> (17. 4. 2023) - <a href="/music/scores.html">View score</a>
+            </div>
+            <div class="embed tall">
+              
+            </div>
+          </li>
+        </ul>
+
+        <!-- MANE QUIES I -->
+        <ul class="works">
+          <li class="work">
+            <div class="work-head">
+              <strong>Mane quies I —</strong> (16. 4. 2023) - <a href="/music/scores.html">View score</a>
+            </div>
+            <div class="embed tall">
+              
+            </div>
+          </li>
+        </ul>
+
+        <!-- NOX OTIUM -->
+        <ul class="works">
+          <li class="work">
+            <div class="work-head">
+              <strong>Nox otium —</strong> (2. 2. 2023) - <a href="/music/scores.html">View score</a>
+            </div>
+            <div class="embed tall">
+              
+            </div>
+          </li>
+        </ul>
+
+        <!-- NOX METUS -->
+        <ul class="works">
+          <li class="work">
+            <div class="work-head">
+              <strong>Nox metus —</strong> (1. 2. 2023) - <a href="/music/scores.html">View score</a>
+            </div>
+            <div class="embed tall">
+              <iframe width="700" height="480" src="https://www.youtube.com/embed/IY6bxXDeTHg?si=bqXq4DpoVCYTx96I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </li>
+        </ul>
+
+        <!-- NOX DUBIA -->
+        <ul class="works">
+          <li class="work">
+            <div class="work-head">
+              <strong>Nox dubia —</strong> (30. 12. 2021) - <a href="/music/scores.html">View score</a>
+            </div>
+            <div class="embed tall">
+              <iframe width="700" height="480" src="https://www.youtube.com/embed/-JOlVbC0_X8?si=BsPSihbFuBRg93NC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </li>
+        </ul>
+
+        <!-- VESPERUM DUBIA III -->
+        <ul class="works">
+          <li class="work">
+            <div class="work-head">
+              <strong>Vesperum dubia III —</strong> (13. 12. 2021) - <a href="/music/scores.html">View score</a>
+            </div>
+            <div class="embed tall">
+              <iframe width="700" height="480" src="https://www.youtube.com/embed/5kbZrplhDqo?si=3z6D6tvkZn9JUHhS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </li>
+        </ul>
+
+        <!-- VESPERUM DUBIA II -->
+        <ul class="works">
+          <li class="work">
+            <div class="work-head">
+              <strong>Vesperum dubia II —</strong> (9. 12. 2021) - <a href="/music/scores.html">View score</a>
+            </div>
+            <div class="embed tall">
+              <iframe width="700" height="480" src="https://www.youtube.com/embed/P0eGFfOwD34" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </li>
+        </ul>
+
+        <!-- VESPERUM DUBIA I -->
+        <ul class="works">
+          <li class="work">
+            <div class="work-head">
+              <strong>Vesperum dubia I —</strong> (2. 12. 2021) - <a href="/music/scores.html">View score</a>
+            </div>
+            <div class="embed tall">
+              <iframe width="700" height="480" src="https://www.youtube.com/embed/khL6l7pV4E8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============ PROJECT: UNSCRIPTED ============ -->
+      <section id="proj-unscripted" class="project">
+        <h2>Unscripted</h2>
+        <p class="meta">2023– · solo jazz piano</p>
+        <span>·</span><a href="https://youtube.com/playlist?list=PLJOUP8w8GHCrzcc3VVS5jLTVydLHW0EqZ&si=sKEyM-waDuD_02px" target="_blank" rel="noopener">Youtube playlist</a>
+
+        <!-- Unscripted III - Moonlit Clover -->
+        <ul class="works">
+          <li class="work">
+            <div class="work-head">
+              <strong>Unscripted III - Moonlit Clover —</strong> (23. 6. 2024)
+            </div>
+            <div class="embed tall">
+
+            </div>
+          </li>
+        </ul>
+
+        <!-- Unscripted II - Strollin' in the Blue -->
+        <ul class="works">
+          <li class="work">
+            <div class="work-head">
+              <strong>Unscripted II - Strollin' in the Blue —</strong> (14. 10. 2023)
+            </div>
+            <div class="embed tall">
+              
+            </div>
+          </li>
+        </ul>
+
+        <!-- Unscripted I - Clumsy Pedestrian -->
+        <ul class="works">
+          <li class="work">
+            <div class="work-head">
+              <strong>Unscripted I - Clumsy Pedestrian —</strong> (14. 10. 2023)
+            </div>
+            <div class="embed tall">
+              
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============ PROJECT: THE LAKE OF THE PURPLE FISH ============ -->
+      <section id="proj-lake-purple-fish" class="project">
+        <h2>The lake of the purple fish</h2>
+        <p class="meta">2026– · jazz fusion</p>
+        <p>Coming soon...</p>
+      </section>
+
+    </section> <!-- /#music -->
+  </main>
+
+  <!-- Floating "Back to projects" button -->
+  <a href="#top" class="float-back hidden" title="Back to Projects">↑ Back to projects</a>
+
   <script>
-    // Inject global nav and highlight current top-level section
+    // Highlight helper
+    function highlightActive(container) {
+      const here = location.pathname.replace(/index\.html$/, "") || "/";
+      container.querySelectorAll("a[href]").forEach(a => {
+        const url = new URL(a.getAttribute("href"), location.origin);
+        const path = url.pathname.replace(/index\.html$/, "") || "/";
+        if (path === here) {
+          a.setAttribute("aria-current", "page");
+          a.classList.add("active");
+        }
+      });
+    }
+
+    // Load main nav
     fetch("/nav.html")
       .then(r => r.text())
       .then(html => {
-        const container = document.getElementById("navbar");
-        container.innerHTML = html;
+        const el = document.getElementById("navbar");
+        el.innerHTML = html;
+        highlightActive(el);
+      });
 
-        const here = location.pathname.replace(/index\.html$/, "").replace(/\/+$/, "/") || "/";
-        container.querySelectorAll("a").forEach(a => {
-          const path = new URL(a.getAttribute("href"), location.origin).pathname
-                        .replace(/index\.html$/, "").replace(/\/+$/, "/") || "/";
-          if (path === here || (here.startsWith("/music/") && path === "/music/")) {
-            a.setAttribute("aria-current", "page");
-          }
+    // Load music subnav (appears below social links)
+    fetch("/music/music_nav.html")
+      .then(r => r.text())
+      .then(html => {
+        const el = document.getElementById("subnav");
+        el.innerHTML = html;
+        highlightActive(el);
+      });
+
+    // Show the floating button only after scrolling past the TOC
+    const backBtn = document.querySelector(".float-back");
+    const triggerEl = document.getElementById("projects");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) backBtn.classList.add("hidden");
+          else backBtn.classList.remove("hidden");
         });
-      });
+      },
+      { rootMargin: "0px 0px 0px 0px", threshold: 0 }
+    );
+    if (triggerEl) observer.observe(triggerEl);
   </script>
-
-  <!-- Local subnav (only for /music pages) -->
-  <nav class="subnav" aria-label="Music subnavigation">
-    <a href="/music/">< -- Back to projects</a>
-    <!-- <a href="/music/videos/">Videos</a> -->
-  </nav>
-  <script>
-    // Mark active link in the local subnav
-    (function () {
-      const here = location.pathname.replace(/index\.html$/, "").replace(/\/+$/, "/") || "/";
-      document.querySelectorAll(".subnav a").forEach(a => {
-        const path = new URL(a.getAttribute("href"), location.origin).pathname
-                      .replace(/index\.html$/, "").replace(/\/+$/, "/") || "/";
-        if (path === here) a.setAttribute("aria-current", "page");
-      });
-    })();
-  </script>
-
-  <main>
-    <h1>Scores</h1>
-
-    <!-- Tukaj daj seznam partitur / PDF-jev, ali embed YouTube/Score videos -->
-    <!-- Primer minimalnega seznama -->
-    <ul>
-      <li><a href="/music/scores/piece1.pdf">Piece 1 (PDF)</a></li>
-      <li><a href="/music/scores/piece2.pdf">Piece 2 (PDF)</a></li>
-      <!-- ... -->
-    </ul>
-
-    <!-- Lahko dodaš še razdelke, filtre, itd. -->
-  </main>
 </body>
 </html>

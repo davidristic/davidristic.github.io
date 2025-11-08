@@ -33,44 +33,27 @@
 </head>
 <body>
   <a id="top"></a>
-  <!-- Navbar slot -->
-  <div id="navbar"></div>
-  <script>
-    // Inject nav.html and highlight current page
-    fetch("/nav.html")
-      .then(r => r.text())
-      .then(html => {
-        const container = document.getElementById("navbar");
-        container.innerHTML = html;
 
-        const here = location.pathname.replace(/index\.html$/, "") || "/";
-        container.querySelectorAll("a").forEach(a => {
-          const url = new URL(a.getAttribute("href"), location.origin);
-          const path = url.pathname.replace(/index\.html$/, "") || "/";
-          if (path === here) {
-            a.setAttribute("aria-current", "page");
-            a.classList.add("active");
-          }
-        });
-      });
-  </script>
+  <!-- Main navigation -->
+  <div id="navbar" aria-label="Main navigation"></div>
 
   <main>
     <section id="music">
-      <h1>Music</h1>
-      <p class="lede">
-      </p>
+      <p class="lede"></p>
 
       <!-- Social hub -->
       <nav class="social-links" aria-label="Music platforms">
-        <a href="https://www.instagram.com/davidristicmusic/face" target="_blank" rel="noopener">Instagram</a><span>·</span>
+        <a href="https://www.instagram.com/davidristicmusic" target="_blank" rel="noopener">Instagram</a><span>·</span>
         <a href="https://www.facebook.com/davidristicmusic"  target="_blank" rel="noopener">Facebook</a><span>·</span>
-        <a href="https://www.youtube.com/@davristic"  target="_blank" rel="noopener">YouTube</a><span>·</span>
-        <a href="https://davidristic.bandcamp.com/"  target="_blank" rel="noopener">Bandcamp</a><span>·</span>
-        <a href="https://soundcloud.com/davidristic"    target="_blank" rel="noopener">SoundCloud</a>
+        <a href="https://www.youtube.com/@davristic"         target="_blank" rel="noopener">YouTube</a><span>·</span>
+        <a href="https://davidristic.bandcamp.com/"          target="_blank" rel="noopener">Bandcamp</a><span>·</span>
+        <a href="https://soundcloud.com/davidristic"         target="_blank" rel="noopener">SoundCloud</a><span>·</span>
+        <a href="https://open.spotify.com/artist/1wvH3MOi3out1ceeRonIXZ" target="_blank" rel="noopener">Spotify</a>
       </nav>
 
-      <a href="/music/scores.html" >Scores</a>
+      <!-- Sub-navigation (injected below social links) -->
+      <div id="subnav" aria-label="Music subnavigation"></div>
+
 
       <!-- Project index / TOC -->
       <nav id="projects" class="project-toc" aria-label="Project index">
@@ -89,153 +72,117 @@
         <span>·</span><a href="https://youtube.com/playlist?list=PLJOUP8w8GHCpUiOfmTMSE9YMfsxZp9UvQ&si=7Y7-57jACCmUhoB5" target="_blank" rel="noopener">Youtube playlist</a>
         <span>·</span><a href="https://youtube.com/playlist?list=PLJOUP8w8GHCrhIAn_iaoQrOwbYSE8jzfD&si=rZB_0uymVlkhxSGe" target="_blank" rel="noopener">Score videos playlist</a>
 
-        <!--MANE QUIES II-->
+        <!-- MANE QUIES II -->
         <ul class="works">
           <li class="work">
             <div class="work-head">
               <strong>Mane quies II —</strong> (17. 4. 2023) - <a href="/music/scores.html">View score</a>
             </div>
             <div class="embed tall">
-              <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=4281342542/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://davidristic.bandcamp.com/track/mane-quies-ii">Mane quies II by David Ristič</a></iframe>
-              
+              <iframe style="border:0;width:100%;height:120px" src="https://bandcamp.com/EmbeddedPlayer/track=4281342542/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless>
+                <a href="https://davidristic.bandcamp.com/track/mane-quies-ii">Mane quies II by David Ristič</a>
+              </iframe>
             </div>
           </li>
-
         </ul>
 
-
-        <!--MANE QUIES I-->
+        <!-- MANE QUIES I -->
         <ul class="works">
           <li class="work">
             <div class="work-head">
               <strong>Mane quies I —</strong> (16. 4. 2023) - <a href="/music/scores.html">View score</a>
             </div>
             <div class="embed tall">
-              <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=4122448067/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://davidristic.bandcamp.com/track/mane-quies-i">Mane quies I by David Ristič</a></iframe>
-              
+              <iframe style="border:0;width:100%;height:120px" src="https://bandcamp.com/EmbeddedPlayer/track=4122448067/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless>
+                <a href="https://davidristic.bandcamp.com/track/mane-quies-i">Mane quies I by David Ristič</a>
+              </iframe>
             </div>
           </li>
-
         </ul>
 
-
-        <!--NOX OTIUM-->
+        <!-- NOX OTIUM -->
         <ul class="works">
           <li class="work">
             <div class="work-head">
               <strong>Nox otium —</strong> (2. 2. 2023) - <a href="/music/scores.html">View score</a>
             </div>
             <div class="embed tall">
-              <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1394767792/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://davidristic.bandcamp.com/track/nox-otium">Nox otium by David Ristič</a></iframe>
-              
+              <iframe style="border:0;width:100%;height:120px" src="https://bandcamp.com/EmbeddedPlayer/track=1394767792/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless>
+                <a href="https://davidristic.bandcamp.com/track/nox-otium">Nox otium by David Ristič</a>
+              </iframe>
             </div>
           </li>
-
         </ul>
 
-        
-        <!--NOX METUS-->
+        <!-- NOX METUS -->
         <ul class="works">
           <li class="work">
             <div class="work-head">
               <strong>Nox metus —</strong> (1. 2. 2023) - <a href="/music/scores.html">View score</a>
             </div>
             <div class="embed tall">
-              <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1034096785/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://davidristic.bandcamp.com/track/nox-metus">Nox metus by David Ristič</a></iframe>
-              
-              <iframe width="700" height="480" src="https://www.youtube.com/embed/IY6bxXDeTHg?si=bqXq4DpoVCYTx96I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <iframe style="border:0;width:100%;height:120px" src="https://bandcamp.com/EmbeddedPlayer/track=1034096785/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless>
+                <a href="https://davidristic.bandcamp.com/track/nox-metus">Nox metus by David Ristič</a>
+              </iframe>
             </div>
           </li>
-
         </ul>
 
-
-        <!--NOX DUBIA-->
+        <!-- NOX DUBIA -->
         <ul class="works">
           <li class="work">
             <div class="work-head">
               <strong>Nox dubia —</strong> (30. 12. 2021) - <a href="/music/scores.html">View score</a>
             </div>
             <div class="embed tall">
-              <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=858410352/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://davidristic.bandcamp.com/track/nox-dubia">Nox dubia by David Ristič</a></iframe>
-              
-              <iframe width="700" height="480" src="https://www.youtube.com/embed/-JOlVbC0_X8?si=BsPSihbFuBRg93NC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <iframe style="border:0;width:100%;height:120px" src="https://bandcamp.com/EmbeddedPlayer/track=858410352/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless>
+                <a href="https://davidristic.bandcamp.com/track/nox-dubia">Nox dubia by David Ristič</a>
+              </iframe>
             </div>
           </li>
-
         </ul>
 
-
-        <!--VESPERUM DUBIA III-->
+        <!-- VESPERUM DUBIA III -->
         <ul class="works">
           <li class="work">
             <div class="work-head">
               <strong>Vesperum dubia III —</strong> (13. 12. 2021) - <a href="/music/scores.html">View score</a>
             </div>
             <div class="embed tall">
-              <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=3142728922/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://davidristic.bandcamp.com/track/vesperum-dubia-iii">Vesperum dubia III by David Ristič</a></iframe>
-              
-              <iframe width="700" height="480" src="https://www.youtube.com/embed/5kbZrplhDqo?si=3z6D6tvkZn9JUHhS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <iframe style="border:0;width:100%;height:120px" src="https://bandcamp.com/EmbeddedPlayer/track=3142728922/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless>
+                <a href="https://davidristic.bandcamp.com/track/vesperum-dubia-iii">Vesperum dubia III by David Ristič</a>
+              </iframe>
             </div>
           </li>
-
         </ul>
 
-        <!--VESPERUM DUBIA II-->
+        <!-- VESPERUM DUBIA II -->
         <ul class="works">
           <li class="work">
             <div class="work-head">
               <strong>Vesperum dubia II —</strong> (9. 12. 2021) - <a href="/music/scores.html">View score</a>
             </div>
             <div class="embed tall">
-              <iframe style="border: 0; 
-              width: 100%; 
-              height: 120px;" 
-              src="https://bandcamp.com/EmbeddedPlayer/track=2779178195/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" 
-              seamless><a 
-              href="https://davidristic.bandcamp.com/track/vesperum-dubia-ii">Vesperum dubia II by David Ristič</a>
-              </iframe>
-
-              
-              <iframe width="700" height="480" 
-              src="https://www.youtube.com/embed/P0eGFfOwD34" 
-              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+              <iframe style="border:0;width:100%;height:120px" src="https://bandcamp.com/EmbeddedPlayer/track=2779178195/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless>
+                <a href="https://davidristic.bandcamp.com/track/vesperum-dubia-ii">Vesperum dubia II by David Ristič</a>
               </iframe>
             </div>
           </li>
-
         </ul>
 
-
-        <!--VESPERUM DUBIA I-->
+        <!-- VESPERUM DUBIA I -->
         <ul class="works">
           <li class="work">
             <div class="work-head">
               <strong>Vesperum dubia I —</strong> (2. 12. 2021) - <a href="/music/scores.html">View score</a>
             </div>
             <div class="embed tall">
-              <iframe 
-              style="border: 0; 
-              width: 100%; 
-              height: 120px;" 
-              src="https://bandcamp.com/EmbeddedPlayer/track=3880664629/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" 
-              seamless><a 
-              href="https://davidristic.bandcamp.com/track/vesperum-dubia-i">Vesperum dubia I by David Ristič</a>
-              </iframe>
-
-              
-              <iframe width="700" height="480" 
-              src="https://www.youtube.com/embed/khL6l7pV4E8" 
-              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+              <iframe style="border:0;width:100%;height:120px" src="https://bandcamp.com/EmbeddedPlayer/track=3880664629/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless>
+                <a href="https://davidristic.bandcamp.com/track/vesperum-dubia-i">Vesperum dubia I by David Ristič</a>
               </iframe>
             </div>
           </li>
-
         </ul>
-
-
-
-
       </section>
 
       <!-- ============ PROJECT: UNSCRIPTED ============ -->
@@ -244,47 +191,47 @@
         <p class="meta">2023– · solo jazz piano</p>
         <span>·</span><a href="https://youtube.com/playlist?list=PLJOUP8w8GHCrzcc3VVS5jLTVydLHW0EqZ&si=sKEyM-waDuD_02px" target="_blank" rel="noopener">Youtube playlist</a>
 
-        <!--Unscripted III - Moonlit Clover-->
+        <!-- Unscripted III - Moonlit Clover -->
         <ul class="works">
           <li class="work">
             <div class="work-head">
               <strong>Unscripted III - Moonlit Clover —</strong> (23. 6. 2024)
             </div>
             <div class="embed tall">
-              <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=3047275587/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://davidristic.bandcamp.com/track/unscripted-iii-moonlit-clover">Unscripted III - Moonlit Clover by David Ristič</a></iframe>
-              
+              <iframe style="border:0;width:100%;height:120px" src="https://bandcamp.com/EmbeddedPlayer/track=3047275587/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless>
+                <a href="https://davidristic.bandcamp.com/track/unscripted-iii-moonlit-clover">Unscripted III - Moonlit Clover by David Ristič</a>
+              </iframe>
             </div>
           </li>
         </ul>
 
-
-        <!--Unscripted II - Strollin' in the Blue-->
+        <!-- Unscripted II - Strollin' in the Blue -->
         <ul class="works">
           <li class="work">
             <div class="work-head">
               <strong>Unscripted II - Strollin' in the Blue —</strong> (14. 10. 2023)
             </div>
             <div class="embed tall">
-              <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=2512756334/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://davidristic.bandcamp.com/track/unscripted-ii-strollin-in-the-blue">Unscripted II - Strollin&#39; in the Blue by David Ristič</a></iframe>
-              
+              <iframe style="border:0;width:100%;height:120px" src="https://bandcamp.com/EmbeddedPlayer/track=2512756334/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless>
+                <a href="https://davidristic.bandcamp.com/track/unscripted-ii-strollin-in-the-blue">Unscripted II - Strollin&#39; in the Blue by David Ristič</a>
+              </iframe>
             </div>
           </li>
         </ul>
 
-
-        <!--Unscripted I - Clumsy Pedestrian-->
+        <!-- Unscripted I - Clumsy Pedestrian -->
         <ul class="works">
           <li class="work">
             <div class="work-head">
               <strong>Unscripted I - Clumsy Pedestrian —</strong> (14. 10. 2023)
             </div>
             <div class="embed tall">
-              <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=4265528932/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://davidristic.bandcamp.com/track/unscripted-i-clumsy-pedestrian">Unscripted I - Clumsy Pedestrian by David Ristič</a></iframe>
-              
+              <iframe style="border:0;width:100%;height:120px" src="https://bandcamp.com/EmbeddedPlayer/track=4265528932/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/artwork=small/transparent=true/" seamless>
+                <a href="https://davidristic.bandcamp.com/track/unscripted-i-clumsy-pedestrian">Unscripted I - Clumsy Pedestrian by David Ristič</a>
+              </iframe>
             </div>
           </li>
         </ul>
-
       </section>
 
       <!-- ============ PROJECT: THE LAKE OF THE PURPLE FISH ============ -->
@@ -292,22 +239,51 @@
         <h2>The lake of the purple fish</h2>
         <p class="meta">2026– · jazz fusion</p>
         <p>Coming soon...</p>
-
-        
       </section>
-    </section>
+
+    </section> <!-- /#music -->
   </main>
 
   <!-- Floating "Back to projects" button -->
   <a href="#top" class="float-back hidden" title="Back to Projects">↑ Back to projects</a>
 
   <script>
-    // Show the floating button only after scrolling past the intro/TOC
+    // Highlight helper
+    function highlightActive(container) {
+      const here = location.pathname.replace(/index\.html$/, "") || "/";
+      container.querySelectorAll("a[href]").forEach(a => {
+        const url = new URL(a.getAttribute("href"), location.origin);
+        const path = url.pathname.replace(/index\.html$/, "") || "/";
+        if (path === here) {
+          a.setAttribute("aria-current", "page");
+          a.classList.add("active");
+        }
+      });
+    }
+
+    // Load main nav
+    fetch("/nav.html")
+      .then(r => r.text())
+      .then(html => {
+        const el = document.getElementById("navbar");
+        el.innerHTML = html;
+        highlightActive(el);
+      });
+
+    // Load music subnav (appears below social links)
+    fetch("/music/music_nav.html")
+      .then(r => r.text())
+      .then(html => {
+        const el = document.getElementById("subnav");
+        el.innerHTML = html;
+        highlightActive(el);
+      });
+
+    // Show the floating button only after scrolling past the TOC
     const backBtn = document.querySelector(".float-back");
     const triggerEl = document.getElementById("projects");
     const observer = new IntersectionObserver(
       (entries) => {
-        // When the TOC is not visible, show the button
         entries.forEach(entry => {
           if (entry.isIntersecting) backBtn.classList.add("hidden");
           else backBtn.classList.remove("hidden");
