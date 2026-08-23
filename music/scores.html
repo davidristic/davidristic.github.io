@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Selected music scores by David Ristič." />
   <title>David Ristič - Music - Scores</title>
 
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
@@ -10,38 +11,15 @@
   <!-- Fonts & site CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaossa/cmu-fonts-web@latest/cmu-fonts.css">
   <link rel="stylesheet" href="/css/styles.css">
-
-  <!-- Page-local styles for the floating "Back to projects" button -->
-  <style>
-    html { scroll-behavior: smooth; }
-    .float-back {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      padding: 0.5rem 0.9rem;
-      background: #f5f5f5;
-      border: 1px solid #ccc;
-      border-radius: 0.4rem;
-      font-size: 0.9rem;
-      color: #111;
-      text-decoration: none;
-      opacity: 0.75;
-      transition: opacity 0.25s, background 0.2s;
-      z-index: 999;
-    }
-    .float-back:hover { opacity: 1; background: #eaeaea; }
-    .float-back.hidden { opacity: 0; pointer-events: none; }
-  </style>
+  <script src="/js/main.js" defer></script>
 </head>
 <body>
-  <a id="top"></a>
-
   <!-- Main navigation -->
   <div id="navbar" aria-label="Main navigation"></div>
 
   <main>
     <section id="music">
-      <p class="lede"></p>
+      <h1>Scores</h1>
 
       <!-- Social hub -->
       <nav class="social-links" aria-label="Music platforms">
@@ -71,24 +49,27 @@
       <section id="proj-dubia" class="project">
         <h2>Dubia</h2>
         <p class="meta">2021–2023 · improvised solo piano</p>
-        <span>·</span><a href="https://youtube.com/playlist?list=PLJOUP8w8GHCpUiOfmTMSE9YMfsxZp9UvQ&si=7Y7-57jACCmUhoB5" target="_blank" rel="noopener">Youtube playlist</a>
-        <span>·</span><a href="https://youtube.com/playlist?list=PLJOUP8w8GHCrhIAn_iaoQrOwbYSE8jzfD&si=rZB_0uymVlkhxSGe" target="_blank" rel="noopener">Score videos playlist</a>
+        <nav class="project-links" aria-label="Dubia links">
+          <a href="https://youtube.com/playlist?list=PLJOUP8w8GHCpUiOfmTMSE9YMfsxZp9UvQ&si=7Y7-57jACCmUhoB5" target="_blank" rel="noopener">YouTube playlist</a>
+          <span>·</span>
+          <a href="https://youtube.com/playlist?list=PLJOUP8w8GHCrhIAn_iaoQrOwbYSE8jzfD&si=rZB_0uymVlkhxSGe" target="_blank" rel="noopener">Score videos playlist</a>
+        </nav>
 
         <!-- MANE QUIES II -->
         <ul class="works">
-          <li class="work">
+          <li id="score-mane-quies-ii" class="work">
             <div class="work-head">
               <strong>Mane quies II —</strong>
             </div>
             <div class="embed tall">
-              
+              <p class="status">Score coming soon.</p>
             </div>
           </li>
         </ul>
 
         <!-- MANE QUIES I -->
         <ul class="works">
-          <li class="work">
+          <li id="score-mane-quies-i" class="work">
             <div class="work-head">
               <strong>Mane quies I —</strong>
             </div>
@@ -100,7 +81,7 @@
 
         <!-- NOX OTIUM -->
         <ul class="works">
-          <li class="work">
+          <li id="score-nox-otium" class="work">
             <div class="work-head">
               <strong>Nox otium —</strong>
             </div>
@@ -112,7 +93,7 @@
 
         <!-- NOX METUS -->
         <ul class="works">
-          <li class="work">
+          <li id="score-nox-metus" class="work">
             <div class="work-head">
               <strong>Nox metus —</strong>
             </div>
@@ -124,7 +105,7 @@
 
         <!-- NOX DUBIA -->
         <ul class="works">
-          <li class="work">
+          <li id="score-nox-dubia" class="work">
             <div class="work-head">
               <strong>Nox dubia —</strong>
             </div>
@@ -136,7 +117,7 @@
 
         <!-- VESPERUM DUBIA III -->
         <ul class="works">
-          <li class="work">
+          <li id="score-vesperum-dubia-iii" class="work">
             <div class="work-head">
               <strong>Vesperum dubia III —</strong>
             </div>
@@ -148,7 +129,7 @@
 
         <!-- VESPERUM DUBIA II -->
         <ul class="works">
-          <li class="work">
+          <li id="score-vesperum-dubia-ii" class="work">
             <div class="work-head">
               <strong>Vesperum dubia II —</strong>
             </div>
@@ -160,7 +141,7 @@
 
         <!-- VESPERUM DUBIA I -->
         <ul class="works">
-          <li class="work">
+          <li id="score-vesperum-dubia-i" class="work">
             <div class="work-head">
               <strong>Vesperum dubia I —</strong>
             </div>
@@ -176,40 +157,42 @@
       <section id="proj-unscripted" class="project">
         <h2>Unscripted</h2>
         <p class="meta">2023– · solo jazz piano</p>
-        <span>·</span><a href="https://youtube.com/playlist?list=PLJOUP8w8GHCrzcc3VVS5jLTVydLHW0EqZ&si=sKEyM-waDuD_02px" target="_blank" rel="noopener">Youtube playlist</a>
+        <nav class="project-links" aria-label="Unscripted links">
+          <a href="https://youtube.com/playlist?list=PLJOUP8w8GHCrzcc3VVS5jLTVydLHW0EqZ&si=sKEyM-waDuD_02px" target="_blank" rel="noopener">YouTube playlist</a>
+        </nav>
 
         <!-- Unscripted III - Moonlit Clover -->
         <ul class="works">
-          <li class="work">
+          <li id="score-unscripted-iii" class="work">
             <div class="work-head">
               <strong>Unscripted III - Moonlit Clover —</strong>
             </div>
             <div class="embed tall">
-
+              <p class="status">Score coming soon.</p>
             </div>
           </li>
         </ul>
 
         <!-- Unscripted II - Strollin' in the Blue -->
         <ul class="works">
-          <li class="work">
+          <li id="score-unscripted-ii" class="work">
             <div class="work-head">
               <strong>Unscripted II - Strollin' in the Blue —</strong>
             </div>
             <div class="embed tall">
-              
+              <p class="status">Score coming soon.</p>
             </div>
           </li>
         </ul>
 
         <!-- Unscripted I - Clumsy Pedestrian -->
         <ul class="works">
-          <li class="work">
+          <li id="score-unscripted-i" class="work">
             <div class="work-head">
               <strong>Unscripted I - Clumsy Pedestrian —</strong> (14. 10. 2023)
             </div>
             <div class="embed tall">
-              
+              <p class="status">Score coming soon.</p>
             </div>
           </li>
         </ul>
@@ -225,17 +208,23 @@
     </section> <!-- /#music -->
   </main>
 
+  <footer class="site-footer">
+    © <span data-current-year>2026</span> David Ristič
+  </footer>
+
   <!-- Floating "Back to projects" button -->
-  <a href="#top" class="float-back hidden" title="Back to Projects">↑ Back to projects</a>
+  <a href="#projects" class="float-back hidden" title="Back to projects">↑ Back to projects</a>
 
   <script>
     // Highlight helper
     function highlightActive(container) {
       const here = location.pathname.replace(/index\.html$/, "") || "/";
+      const isMainNav = container.id === "navbar";
       container.querySelectorAll("a[href]").forEach(a => {
         const url = new URL(a.getAttribute("href"), location.origin);
         const path = url.pathname.replace(/index\.html$/, "") || "/";
-        if (path === here) {
+        const isCurrent = path === here || (isMainNav && path !== "/" && here.startsWith(path));
+        if (isCurrent) {
           a.setAttribute("aria-current", "page");
           a.classList.add("active");
         }
@@ -260,19 +249,6 @@
         highlightActive(el);
       });
 
-    // Show the floating button only after scrolling past the TOC
-    const backBtn = document.querySelector(".float-back");
-    const triggerEl = document.getElementById("projects");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) backBtn.classList.add("hidden");
-          else backBtn.classList.remove("hidden");
-        });
-      },
-      { rootMargin: "0px 0px 0px 0px", threshold: 0 }
-    );
-    if (triggerEl) observer.observe(triggerEl);
   </script>
 </body>
 </html>

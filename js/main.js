@@ -1,36 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Footer year
-  const y = document.getElementById("year");
-  if (y) y.textContent = new Date().getFullYear();
-
-  // Theme toggle
-  const toggle = document.getElementById("themeToggle");
-  const root = document.documentElement;
-  const stored = localStorage.getItem("theme");
-  if (stored === "light") root.classList.add("light");
-  toggle?.addEventListener("click", () => {
-    root.classList.toggle("light");
-    localStorage.setItem("theme", root.classList.contains("light") ? "light" : "dark");
+  document.querySelectorAll("[data-current-year]").forEach((element) => {
+    element.textContent = new Date().getFullYear();
   });
 
-  // Tabs: Research / Music
-  const buttons = Array.from(document.querySelectorAll(".tab-btn"));
-  const panels = Array.from(document.querySelectorAll(".panel"));
-
-  function activate(targetSel){
-    buttons.forEach(b => b.classList.toggle("active", b.dataset.target === targetSel));
-    panels.forEach(p => p.classList.toggle("active", `#${p.id}` === targetSel));
-    const activePanel = document.querySelector(targetSel);
-    activePanel?.focus({ preventScroll: false });
+  function labelExternalLinks(root = document) {
+    root.querySelectorAll('a[target="_blank"]').forEach((link) => {
+      if (!link.hasAttribute("aria-label")) {
+        link.setAttribute("aria-label", `${link.textContent.trim()} (opens in a new tab)`);
+      }
+    });
   }
 
-  // Default to first tab
-  if (buttons.length) {
-    buttons[0].classList.add("active");
-    panels[0]?.classList.add("active");
-  }
+  labelExternalLinks();
 
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => activate(btn.dataset.target));
-  });
+  new MutationObserver(() => labelExternalLinks())
+    .observe(document.body, { childList: true, subtree: true });
+
+  const backButton = document.querySelector(".float-back");
+  const projects = document.getElementById("projects");
+
+  if (backButton && projects) {
+    const updateBackButton = () => {
+      backButton.classList.toggle("hidden", projects.getBoundingClientRect().bottom >= 0);
+    };
+
+    updateBackButton();
+    window.addEventListener("scroll", updateBackButton, { passive: true });
+    backButton.addEventListener("click", () => backButton.classList.add("hidden"));
+  }
 });
