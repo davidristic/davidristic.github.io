@@ -325,14 +325,17 @@ button.reset, .reset-button {
 }
 .pub-list > li {
   counter-increment: pub;
-  margin: 0 0 0.7rem 0;
-  padding-left: 2.2ch;
-  text-indent: -2.2ch;
+  margin: 0 0 1.5rem 0;
+  padding-left: 2.4ch;
+  position: relative;
 }
 .pub-list > li::marker { content: none; }
 .pub-list > li::before {
-  content: "[" counter(pub) "] ";
+  content: "[" counter(pub) "]";
   font-variant-numeric: tabular-nums;
+  left: 0;
+  position: absolute;
+  top: 0;
 }
 .pub-list a { text-decoration: none; }
 .pub-list a:hover { text-decoration: underline; }
@@ -344,6 +347,160 @@ button.reset, .reset-button {
 .pub-list a { color: inherit; }
 .pub-list a:hover { text-decoration: underline; }
 
+.pub-figures {
+  margin-top: 1rem;
+  max-width: 42rem;
+}
+
+.pub-figure-grid {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 0.8rem;
+}
+
+.pub-figure-card {
+  margin: 0;
+  min-width: 0;
+}
+
+.pub-figure-trigger {
+  appearance: none;
+  background: #fff;
+  border: 1px solid #ddd;
+  cursor: zoom-in;
+  display: block;
+  padding: 0.35rem;
+  width: 100%;
+}
+
+.pub-figure-trigger:hover {
+  border-color: #777;
+}
+
+.pub-figure-trigger:focus-visible {
+  outline: 2px solid #222;
+  outline-offset: 2px;
+}
+
+.pub-figure-trigger img {
+  aspect-ratio: 4 / 3;
+  display: block;
+  height: auto;
+  object-fit: contain;
+  width: 100%;
+}
+
+.pub-figure-card figcaption {
+  color: #555;
+  font-size: 0.82em;
+  margin-top: 0.3rem;
+  text-align: center;
+}
+
+.figure-lightbox {
+  background: #fff;
+  border: 1px solid #555;
+  box-shadow: 0 1rem 3rem rgb(0 0 0 / 0.3);
+  max-height: 94vh;
+  max-width: 76rem;
+  overflow: hidden;
+  padding: 0;
+  width: 94vw;
+}
+
+.figure-lightbox::backdrop {
+  background: rgb(0 0 0 / 0.72);
+}
+
+.figure-lightbox-panel {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  max-height: 94vh;
+}
+
+.figure-lightbox-toolbar {
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  padding: 0.55rem;
+}
+
+.figure-lightbox-toolbar-group {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.figure-lightbox button {
+  background: #fff;
+  border: 1px solid #aaa;
+  color: #222;
+  cursor: pointer;
+  padding: 0.35rem 0.55rem;
+}
+
+.figure-lightbox button:hover:not(:disabled) {
+  border-color: #222;
+}
+
+.figure-lightbox button:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+.figure-lightbox-image-wrap {
+  background: #f2f2f2;
+  display: grid;
+  min-height: 16rem;
+  overflow: auto;
+  place-items: center;
+}
+
+.figure-lightbox-image {
+  display: block;
+  height: auto;
+  max-height: calc(94vh - 14rem);
+  max-width: 100%;
+  width: auto;
+}
+
+.figure-lightbox-image-wrap.is-actual-size {
+  place-items: start;
+}
+
+.figure-lightbox-image-wrap.is-actual-size .figure-lightbox-image {
+  max-height: none;
+  max-width: none;
+}
+
+.figure-lightbox-caption {
+  border-top: 1px solid #ddd;
+  color: #444;
+  line-height: 1.4;
+  max-height: 10rem;
+  overflow: auto;
+  padding: 0.75rem 1rem;
+}
+
+.figure-lightbox-caption p {
+  margin: 0;
+}
+
+.figure-lightbox-meta {
+  display: flex;
+  font-size: 0.88em;
+  gap: 0.8rem;
+  margin-top: 0.45rem;
+}
+
+body.figure-lightbox-open {
+  overflow: hidden;
+}
+
 @media (max-width: 600px) {
   main { margin-block: 2rem; }
 
@@ -353,6 +510,41 @@ button.reset, .reset-button {
   }
 
   .social-links span { display: none; }
+
+  .pub-figure-grid {
+    gap: 0.6rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 0.6rem;
+  }
+
+  .figure-lightbox,
+  .figure-lightbox-panel {
+    max-height: 96vh;
+  }
+
+  .figure-lightbox {
+    width: 96vw;
+  }
+
+  .figure-lightbox-toolbar {
+    align-items: stretch;
+  }
+
+  .figure-lightbox-toolbar-group {
+    flex: 1;
+  }
+
+  .figure-lightbox-toolbar-group button {
+    flex: 1;
+  }
+
+  .figure-lightbox-image {
+    max-height: calc(96vh - 16rem);
+  }
+
+  .figure-lightbox-caption {
+    max-height: 12rem;
+  }
 
   .float-back {
     right: 0.75rem;
