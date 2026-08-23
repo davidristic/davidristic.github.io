@@ -6,29 +6,25 @@ html {
 /* ---------- LaTeX-like font setup (Computer Modern / CMU) ---------- */
 @font-face {
   font-family: "CMU Serif";
-  src: url("/assets/fonts/cmu/cmunrm.woff2") format("woff2"),
-       url("/assets/fonts/cmu/cmunrm.otf") format("opentype");
+  src: url("/assets/fonts/cmu/cmunrm.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "CMU Serif";
-  src: url("/assets/fonts/cmu/cmunti.woff2") format("woff2"),
-       url("/assets/fonts/cmu/cmunti.otf") format("opentype");
+  src: url("/assets/fonts/cmu/cmunti.otf") format("opentype");
   font-weight: 400;
   font-style: italic;
 }
 @font-face {
   font-family: "CMU Serif";
-  src: url("/assets/fonts/cmu/cmunbx.woff2") format("woff2"),
-       url("/assets/fonts/cmu/cmunbx.otf") format("opentype");
+  src: url("/assets/fonts/cmu/cmunbx.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: "CMU Serif";
-  src: url("/assets/fonts/cmu/cmunbi.woff2") format("woff2"),
-       url("/assets/fonts/cmu/cmunbi.otf") format("opentype");
+  src: url("/assets/fonts/cmu/cmunbi.otf") format("opentype");
   font-weight: 700;
   font-style: italic;
 }
