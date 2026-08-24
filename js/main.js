@@ -16,6 +16,39 @@ document.addEventListener("DOMContentLoaded", () => {
   new MutationObserver(() => labelExternalLinks())
     .observe(document.body, { childList: true, subtree: true });
 
+  document.addEventListener("click", (event) => {
+    const toggle = event.target.closest(".pub-figures-toggle");
+    if (!toggle) return;
+
+    const figures = toggle.closest(".pub-figures");
+    const panel = figures.querySelector(".pub-figures-panel");
+    const label = toggle.querySelector("[data-figures-toggle-label]");
+    const willOpen = toggle.getAttribute("aria-expanded") !== "true";
+
+    toggle.setAttribute("aria-expanded", String(willOpen));
+    panel.setAttribute("aria-hidden", String(!willOpen));
+    panel.inert = !willOpen;
+    panel.querySelectorAll("button, a").forEach((control) => {
+      if (willOpen) {
+        control.removeAttribute("tabindex");
+      } else {
+        control.setAttribute("tabindex", "-1");
+      }
+    });
+    label.textContent = willOpen ? "Hide figures" : "Show figures";
+
+    if (willOpen) {
+      panel.hidden = false;
+      void panel.offsetHeight;
+      figures.classList.add("is-open");
+    } else {
+      figures.classList.remove("is-open");
+      window.setTimeout(() => {
+        if (!figures.classList.contains("is-open")) panel.hidden = true;
+      }, 460);
+    }
+  });
+
   const lightbox = document.createElement("dialog");
   lightbox.className = "figure-lightbox";
   lightbox.setAttribute("aria-label", "Full-size publication figure");

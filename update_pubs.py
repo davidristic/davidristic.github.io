@@ -12,6 +12,7 @@ their citation and simply render without figures.
 """
 
 import argparse
+import hashlib
 import html
 import json
 import re
@@ -362,14 +363,39 @@ def render_figure(figure: Dict[str, str]) -> str:
     )
 
 
-def render_figures(figures: List[Dict[str, str]]) -> str:
+def render_figure_preview(figures: List[Dict[str, str]]) -> str:
+    preview_items = []
+    for figure in figures[:3]:
+        thumbnail = html.escape(figure.get("thumbnail") or figure["image"], quote=True)
+        preview_items.append(
+            '<span class="pub-figures-preview-item">'
+            f'<img src="{thumbnail}" alt="" loading="lazy" decoding="async">'
+            '</span>'
+        )
+    return "".join(preview_items)
+
+
+def render_figures(figures: List[Dict[str, str]], gallery_id: str) -> str:
     if not figures:
         return ""
 
     gallery_items = "\n".join(render_figure(item) for item in figures)
+    preview_items = render_figure_preview(figures)
     return (
         '<section class="pub-figures" aria-label="Publication figures">\n'
-        f'  <div class="pub-figure-grid">\n{gallery_items}\n  </div>\n'
+        f'  <button class="pub-figures-toggle" type="button" '
+        f'aria-expanded="false" aria-controls="{gallery_id}">\n'
+        f'    <span class="pub-figures-preview" aria-hidden="true">{preview_items}</span>\n'
+        '    <span class="pub-figures-toggle-label">'
+        '<span data-figures-toggle-label>Show figures</span>'
+        '<span class="pub-figures-chevron" aria-hidden="true"></span>'
+        '</span>\n'
+        '  </button>\n'
+        f'  <div class="pub-figures-panel" id="{gallery_id}" aria-hidden="true" hidden inert>\n'
+        '    <div class="pub-figures-panel-inner">\n'
+        f'      <div class="pub-figure-grid">\n{gallery_items}\n      </div>\n'
+        '    </div>\n'
+        '  </div>\n'
         '</section>'
     )
 
@@ -400,7 +426,9 @@ def render_li(publication: Dict[str, Any]) -> str:
         )
 
     citation = ", ".join(parts) + "."
-    figures = render_figures(publication.get("figures", []))
+    gallery_key = manifest_key(publication).encode("utf-8")
+    gallery_id = f"publication-figures-{hashlib.sha1(gallery_key).hexdigest()[:10]}"
+    figures = render_figures(publication.get("figures", []), gallery_id)
     return (
         f'<li{doi_attr}>\n'
         f'  <div class="pub-citation">{citation}</div>\n'
