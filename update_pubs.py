@@ -439,7 +439,7 @@ def render_li(publication: Dict[str, Any]) -> str:
 
 def build_html_list(publications: List[Dict[str, Any]]) -> str:
     items = "\n".join(render_li(publication) for publication in publications)
-    return f'<ol class="pub-list">\n{items}\n</ol>\n'
+    return f'<ol class="pub-list" reversed>\n{items}\n</ol>\n'
 
 
 def main() -> None:
